@@ -1,6 +1,7 @@
 /* global Reveal:false */
 (async () => {
-  $('.mw-parser-output').addClas;
+  $('#bodyContent').addClass('reveal');
+  $('.mw-parser-output').addClass('slides');
 
   await $.getScript('https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/js/reveal.min.js');
   
