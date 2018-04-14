@@ -1,6 +1,6 @@
 /* global Reveal:false */
 (async () => {
-  $('.mw-parser-output');
+  $('.mw-parser-output').addCla;
 
   await $.getScript('https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/js/reveal.min.js');
   
