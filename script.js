@@ -1,5 +1,6 @@
 /* global Reveal:false */
 (async () => {
+  $('<div class="reveal"/>').append('<div class="slides"/>');
   $('.mw-parser-output')
     .addClass('slides')
     .prepend($('h1'))
