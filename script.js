@@ -23,7 +23,7 @@
   $('.plainlinks, .vertical-navbox, .infobox, .toc, .mw-editsection, .reference, :empty').remove();
 
   $('<link rel="stylesheet"/>')
-    .attr('href', 'https://cdn.jsdelivr.net/npm/reveal.js@3.0.0/css/reveal.min.css')
+    .attr('href', 'https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/css/reveal.min.css')
     .appendTo(document.head);
 
   $('<link rel="stylesheet"/>')
