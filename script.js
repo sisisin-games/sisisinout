@@ -1,16 +1,20 @@
 /* global Reveal:false */
 (async () => {
+  $('.mw-parser-output')
+    .addClass('slides')
+    .prepend($('h1'))
+    .nextAll()
+    .remove();
+
   $('#mw-content-text')
     .addClass('reveal')
     .prependTo(document.body)
     .nextAll()
     .remove();
 
-  $('.mw-parser-output')
-    .addClass('slides')
-    .prepend('h1')
-    .nextAll()
-    .remove();
+  $('.mw-parser-output').find(':header').each((_, h) => {
+    $(h).nextUntil(':header').wrapAll('<section/>');
+  });
 
   $('.vertical-navbox').remove();
 
