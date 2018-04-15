@@ -8,6 +8,7 @@
 
   $('.mw-parser-output')
     .addClass('slides')
+    .prepend('h1')
     .nextAll()
     .remove();
 
