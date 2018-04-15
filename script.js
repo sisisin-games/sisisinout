@@ -18,7 +18,7 @@
       $(h).nextUntil(':header').addBack().wrapAll('<section/>');
     });
 
-  $('.vertical-navbox, .mw-editsection').remove();
+  $('.plainlinks, .vertical-navbox, .infobox, .toc, .mw-editsection, .reference').remove();
 
   $('p').addClass('fragment');
 
