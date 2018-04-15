@@ -11,7 +11,7 @@
       $(h).nextUntil(':header').addBack().wrapAll('<section/>');
     });
 
-  slides.find('> section > *:not(:first-child), > section ').addClass('fragment');
+  slides.find('*').not(':first-child').not('a, span').addClass('fragment');
 
   $('style, link[rel="stylesheet"]').remove();
 
