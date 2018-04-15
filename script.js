@@ -6,12 +6,13 @@
   slides
     .append($('h1'))
     .append($('.mw-parser-output').children())
-    .find('.plainlinks, .vertical-navbox, .infobox, .toc, .mw-editsection, .reference, :empty').remove().end()
+    .find('.plainlinks, .vertical-navbox, .mbox-small, .infobox, .toc, .mw-editsection, .reference, :empty').remove().end()
     .children(':header').each((_, h) => {
       $(h).nextUntil(':header').addBack().wrapAll('<section/>');
     });
 
-  slides.find('*').not(':first-child').not('a, span').addClass('fragment');
+  slides.find('section > :not(section):not(:first-child)').addClass('fragment');
+  slides.find('li, dt, dd').not(':first-child').addClass('fragment');
 
   $('style, link[rel="stylesheet"]').remove();
 
