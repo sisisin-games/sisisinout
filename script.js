@@ -11,7 +11,7 @@
       $(h).nextUntil(':header').addBack().wrapAll('<section/>');
     });
 
-  slides.find(':not(:first-child)').addClass('fragment');
+  slides.find('> section > *:not(:first-child), > section ').addClass('fragment');
 
   $('style, link[rel="stylesheet"]').remove();
 
@@ -27,5 +27,8 @@
 
   await $.getScript('https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/js/reveal.min.js');
   
-  Reveal.initialize({transition: 'fade'});
+  Reveal.initialize({
+    center: false,
+    transition: 'fade',
+  });
 })();
