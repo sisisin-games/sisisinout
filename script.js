@@ -1,26 +1,19 @@
 /* global Reveal:false */
 (async () => {
-  $('<div class="reveal"/>').append('<div class="slides"/>');
-  $('.mw-parser-output')
-    .addClass('slides')
-    .prepend($('h1'))
-    .nextAll()
-    .remove();
+  const container = $('<div class="reveal"/>');
+  const slides = $('<div class="slides"/>').appendTo(container);
 
-  $('#mw-content-text')
-    .addClass('reveal')
-    .prependTo(document.body)
-    .nextAll()
-    .remove();
-
-
-  $('.mw-parser-output')
-    .find(':header').each((_, h) => {
+  slides
+    .append($('h1'))
+    .append($('.mw-parser-output').children())
+    .find('.plainlinks, .vertical-navbox, .infobox, .toc, .mw-editsection, .reference, :empty').remove().end()
+    .children(':header').each((_, h) => {
       $(h).nextUntil(':header').addBack().wrapAll('<section/>');
     });
 
-  $('.plainlinks, .vertical-navbox, .infobox, .toc, .mw-editsection, .reference, :empty').remove();
-  $('.slides :not(:first-child)').addClass('fragment');
+  slides.find(':not(:first-child)').addClass('fragment');
+
+  $('style, link[rel="stylesheet"]').remove();
 
   $('<link rel="stylesheet"/>')
     .attr('href', 'https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/css/reveal.min.css')
@@ -29,6 +22,8 @@
   $('<link rel="stylesheet"/>')
     .attr('href', 'https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/css/theme/league.min.css')
     .appendTo(document.head);
+
+  $('body').empty().append(container);
 
   await $.getScript('https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/js/reveal.min.js');
   
