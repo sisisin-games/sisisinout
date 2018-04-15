@@ -12,9 +12,11 @@
     .nextAll()
     .remove();
 
-  $('.mw-parser-output').find(':header').each((_, h) => {
-    $(h).nextUntil(':header').addBack().wrapAll('<section/>');
-  });
+  $('.mw-parser-output')
+    .children(':not(:header)').addClass('fragment').end()
+    .find(':header').each((_, h) => {
+      $(h).nextUntil(':header').addBack().wrapAll('<section/>');
+    });
 
   $('.vertical-navbox, .mw-editsection').remove();
 
