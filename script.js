@@ -14,13 +14,12 @@
 
 
   $('.mw-parser-output')
-    .children(':not(:header)').addClass('fragment').end()
-    .find('li, dt, dd').filter(':not(:first-child)').addClass('fragment').end().end()
     .find(':header').each((_, h) => {
       $(h).nextUntil(':header').addBack().wrapAll('<section/>');
     });
 
   $('.plainlinks, .vertical-navbox, .infobox, .toc, .mw-editsection, .reference, :empty').remove();
+  $('.slides :not(:first-child)').addClass('fragment');
 
   $('<link rel="stylesheet"/>')
     .attr('href', 'https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/css/reveal.min.css')
