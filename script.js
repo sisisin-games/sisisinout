@@ -13,11 +13,12 @@
     .remove();
 
   $('.mw-parser-output').find(':header').each((_, h) => {
-    $(h).nextUntil(':header').wrapAll('<section/>');
+    $(h).nextUntil(':header').addBack().wrapAll('<section/>');
   });
 
-  $('.vertical-navbox').remove();
+  $('.vertical-navbox, .mw-editsection').remove();
 
+  $('
   $('<link rel="stylesheet"/>')
     .attr('href', 'https://cdn.jsdelivr.net/npm/reveal.js@3.0.0/css/reveal.min.css')
     .appendTo(document.head);
