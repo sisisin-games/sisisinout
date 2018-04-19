@@ -7,6 +7,7 @@
     .append($('h1'))
     .append($('.mw-parser-output').children())
     .find('.plainlinks, .vertical-navbox, .mbox-small, .infobox, .toc, .mw-editsection, .reference, .navbox, :empty:not(img)').remove().end()
+    .find('.references').prev(':header').addBack().remove().end().end().end()
     .children(':header').each((_, h) => {
       $(h).nextUntil(':header').addBack().wrapAll('<section/>');
     });
