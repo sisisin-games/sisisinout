@@ -10,7 +10,8 @@
     .children(':header').each((_, h) => {
       $(h).nextUntil(':header').addBack().wrapAll('<section/>');
     }).end()
-    .find('section > :not(section):not(:first-child), li, dt, dd').not(':first-child').addClass('fragment').end()
+    .find('section > :not(section):not(:first-child)').addClass('fragment').end()
+    .find('li, dt, dd').not(':first-child').addClass('fragment').end()
     .appendTo(container);
 
   $('style, link[rel="stylesheet"]').remove();
