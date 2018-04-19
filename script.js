@@ -1,19 +1,17 @@
 /* global Reveal:false */
 (async () => {
   const container = $('<div class="reveal"/>');
-  const slides = $('<div class="slides"/>').appendTo(container);
 
-  slides
+  $('<div class="slides"/>')
     .append($('h1'))
     .append($('.mw-parser-output').children())
     .find('.plainlinks, .vertical-navbox, .mbox-small, .infobox, .toc, .mw-editsection, .reference, .navbox, :empty:not(img)').remove().end()
-    .find('.references').prev(':header').addBack().remove().end().end().end()
+    .find('.references').prev(':header').remove().end().remove().end()
     .children(':header').each((_, h) => {
       $(h).nextUntil(':header').addBack().wrapAll('<section/>');
-    });
-
-  slides.find('section > :not(section):not(:first-child)').addClass('fragment');
-  slides.find('li, dt, dd').not(':first-child').addClass('fragment');
+    }).end()
+    .find('section > :not(section):not(:first-child), li, dt, dd').not(':first-child').addClass('fragment').end()
+    .appendTo(container);
 
   $('style, link[rel="stylesheet"]').remove();
 
