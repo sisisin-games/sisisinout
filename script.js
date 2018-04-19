@@ -6,7 +6,7 @@
   slides
     .append($('h1'))
     .append($('.mw-parser-output').children())
-    .find('.plainlinks, .vertical-navbox, .mbox-small, .infobox, .toc, .mw-editsection, .reference, :empty').remove().end()
+    .find('.plainlinks, .vertical-navbox, .mbox-small, .infobox, .toc, .mw-editsection, .reference, .navbox, :empty:not(img)').remove().end()
     .children(':header').each((_, h) => {
       $(h).nextUntil(':header').addBack().wrapAll('<section/>');
     });
@@ -29,7 +29,8 @@
   await $.getScript('https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/js/reveal.min.js');
   
   Reveal.initialize({
-    center: false,
+    width: '100%',
+    height: '100%',
     transition: 'fade',
   });
 })();
