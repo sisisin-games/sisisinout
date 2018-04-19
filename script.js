@@ -14,18 +14,13 @@
     .find('li, dt, dd').not(':first-child').addClass('fragment').end().end()
     .appendTo(container);
 
-  $('body').contents().not('#mwe-popups-svg').remove();
-  $('body').append(container);
+  $('body').empty().append(container);
 
-  $('link[rel="stylesheet"]').remove();
+  $('style, link[rel="stylesheet"]').remove();
 
-  $('<link rel="stylesheet"/>')
-    .attr('href', 'https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/css/reveal.min.css')
-    .appendTo('head');
-
-  $('<link rel="stylesheet"/>')
-    .attr('href', 'https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/css/theme/league.min.css')
-    .appendTo('head');
+  $('head')
+    .append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/css/reveal.min.css"/>')
+    .append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/css/theme/league.min.css"/>');
 
   await $.getScript('https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/js/reveal.min.js');
 
