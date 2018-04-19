@@ -26,7 +26,9 @@
 
   const p = $.getScript('https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/js/reveal.min.js');
 
-  $('body').fadeOut().empty().append(container);
+  await $.Deferred(d => $('body').fadeOut().queue(next => { next(); d.resolve(); }));
+
+  $('body').empty().append(container);
 
   await p;
 
