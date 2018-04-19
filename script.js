@@ -1,5 +1,6 @@
 /* global Reveal:false */
 (async () => {
+  const script = $.getScript('https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/js/reveal.min.js');
   const container = $('<div class="reveal"/>');
 
   $('<div class="slides"/>')
@@ -14,6 +15,8 @@
     .find('li, dt, dd').not(':first-child').addClass('fragment').end().end()
     .appendTo(container);
 
+  $('body').hide();
+
   $('style, link[rel="stylesheet"]').remove();
 
   $('<link rel="stylesheet"/>')
@@ -24,17 +27,15 @@
     .attr('href', 'https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/css/theme/league.min.css')
     .appendTo(document.head);
 
-  const p = $.getScript('https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/js/reveal.min.js');
-
-  await $.Deferred(d => $('body').fadeOut().queue(next => { next(); d.resolve(); }));
-
   $('body').empty().append(container);
 
-  await p;
+  await script;
 
   Reveal.initialize({
     width: '100%',
     height: '100%',
     transition: 'fade',
   });
+
+  $('body').fadeIn();
 })();
