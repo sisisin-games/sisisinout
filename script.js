@@ -11,7 +11,7 @@
       $(h).nextUntil(':header').addBack().wrapAll('<section/>');
     }).end()
     .find('section > :not(section):not(:first-child)').addClass('fragment').end()
-    .find('li, dt, dd').not(':first-child').addClass('fragment').end()
+    .find('li, dt, dd').not(':first-child').addClass('fragment').end().end()
     .appendTo(container);
 
   $('style, link[rel="stylesheet"]').remove();
@@ -24,10 +24,12 @@
     .attr('href', 'https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/css/theme/league.min.css')
     .appendTo(document.head);
 
-  $('body').empty().append(container);
+  const p = $.getScript('https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/js/reveal.min.js');
 
-  await $.getScript('https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/js/reveal.min.js');
-  
+  $('body').fadeOut().empty().append(container);
+
+  await p;
+
   Reveal.initialize({
     width: '100%',
     height: '100%',
