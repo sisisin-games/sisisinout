@@ -6,6 +6,10 @@ body {
   padding: 0;
 }
 
+body {
+  background: #000;
+}
+
 .board {
   display: grid;
 }
