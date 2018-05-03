@@ -1,16 +1,21 @@
 $(document).on('click', '.light', ({target}) => {
   const $l = $(target);
-  const x = +$l.data('x');
-  const y = +$l.data('y');
 
-  $l
+  $(document).trigger('lo:click', [
+    +$l.data('x'),
+    +$l.data('y'),
+  ]);
+});
+
+$(document).on('lo:click', (_, x, y) => {
+  $(`[data-x="${x}"][data-y="${y}"]`)
     .add(`[data-x="${x}"][data-y="${y - 1}"]`)
     .add(`[data-x="${x - 1}"][data-y="${y}"]`)
     .add(`[data-x="${x + 1}"][data-y="${y}"]`)
     .add(`[data-x="${x}"][data-y="${y + 1}"]`)
     .toggleClass('on');
 
-  requestAnimationFrame(() => $(document).trigger('lo:change'));
+  setTimeout(() => $(document).trigger('lo:change'), 100);
 });
 
 $(document).on('lo:change', () => {
