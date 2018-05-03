@@ -9,6 +9,11 @@ $(document).on('click', '.light', ({target}) => {
     .add(`[data-x="${x + 1}"][data-y="${y}"]`)
     .add(`[data-x="${x}"][data-y="${y + 1}"]`)
     .toggleClass('on');
+
+  $(document).trigger('lo:change');
+});
+
+$(document).on('lo:change', () => {
 });
 
 jQuery(async $ => {
@@ -20,11 +25,9 @@ jQuery(async $ => {
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-      const l = $(`<div class="light" data-x="${x}" data-y="${y}">`);
-      board.append(l);
-
-      if (Math.random() < 0.5)
-        l.click();
+      board.append(`<div class="light" data-x="${x}" data-y="${y}">`);
     }
   }
+
+  $('.light').filter(() => Math.random() < 0.5).each((_, l) => $(l).click());
 });
