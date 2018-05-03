@@ -20,6 +20,7 @@ body {
 .light {
   border-radius: 50%;
   cursor: pointer;
+  transition: 200ms;
 }
 
 .light.on {

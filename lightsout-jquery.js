@@ -10,10 +10,12 @@ $(document).on('click', '.light', ({target}) => {
     .add(`[data-x="${x}"][data-y="${y + 1}"]`)
     .toggleClass('on');
 
-  $(document).trigger('lo:change');
+  requestAnimationFrame(() => $(document).trigger('lo:change'));
 });
 
 $(document).on('lo:change', () => {
+  if (!$('.light.on').length)
+    $(document).trigger('lo:finish');
 });
 
 jQuery(async $ => {
@@ -30,4 +32,12 @@ jQuery(async $ => {
   }
 
   $('.light').filter(() => Math.random() < 0.5).each((_, l) => $(l).click());
+
+  const startedAt = Date.now();
+
+  await new Promise(resolve => $(document).one('lo:finish', resolve));
+
+  const endedAt = Date.now();
+
+  alert(`クリア！\nタイムは ${(endedAt - startedAt) / 1000 | 0} 秒でした`);
 });
