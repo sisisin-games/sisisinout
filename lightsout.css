@@ -7,6 +7,9 @@ body {
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #000;
 }
 
@@ -15,7 +18,6 @@ body {
   grid-gap: 10px;
   width: 400px;
   height: 400px;
-  margin: 10px auto;
 }
 
 .light {
@@ -24,7 +26,15 @@ body {
   transition: 100ms ease-out;
 }
 
+.light:not(.on):active {
+  background-color: #110;
+}
+
 .light.on {
   background-color: #ffe;
+  box-shadow: 0 0 100px #ffe;
+}
+
+.light.on:active {
   box-shadow: 0 0 50px #ffe;
 }
