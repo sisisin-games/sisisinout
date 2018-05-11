@@ -52,5 +52,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     .filter(() => Math.random() < 0.5)
     .forEach(el => el.click());
 
+  clickCount = 0;
   const startedAt = Date.now();
 }, false);
