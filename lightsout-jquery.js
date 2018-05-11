@@ -1,9 +1,9 @@
 $(document).on('click', '.light', ({target}) => {
-  const $l = $(target);
+  const $el = $(target);
 
   $(document).trigger('lo:click', [
-    +$l.data('x'),
-    +$l.data('y'),
+    +$el.data('x'),
+    +$el.data('y'),
   ]);
 });
 
