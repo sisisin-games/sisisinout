@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const [, width, height] = (location.search.match(/\bsize=(\d+)x(\d+)/) || [, 5, 5]).map(Number);
 
-  document.addEventListener('click', ({target}) => {
+  document.addEventListener('click', event => {
+    let target = event.target;
     if (!target.matches('.light'))
       return;
 
