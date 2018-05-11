@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   function onFinish() {
     const endedAt = Date.now();
 
-    alert(`クリア！\nタイムは ${(endedAt - startedAt) / 1000 | 0} 秒でした`);
+    alert(`クリア！\nタイムは ${(endedAt - startedAt) / 1000 | 0} 秒\nクリック数は ${clickCount} 回でした`);
 
     location.href = `?size=${width + 1}x${height + 1}`;
   }
