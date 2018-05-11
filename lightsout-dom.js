@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const [, width, height] = (location.search.match(/\bsize=(\d+)x(\d+)/) || [, 5, 5]).map(Number);
+  let clickCount = 0;
 
-  document.addEventListener('click', event => {
-    let target = event.target;
+  document.addEventListener('click', ({target}) => {
     if (!target.matches('.light'))
       return;
 
@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   }, false);
 
   function onClick(x, y) {
+    clickCount++;
+
     document.querySelectorAll(`
       [data-x="${x}"][data-y="${y}"],
       [data-x="${x}"][data-y="${y - 1}"],
