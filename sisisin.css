@@ -32,13 +32,12 @@ body {
 }
 
 .nyan:not([data-r="0"]) {
-  animation: hurueru .1s infinite;
+  animation: vibrate .1s infinite;
 }
 
-@keyframes hurueru {
-  0% {transform: translate(0px, 0px) rotateZ(0deg)}
-  25% {transform: translate(2px, 2px) rotateZ(1deg)}
-  50% {transform: translate(0px, 2px) rotateZ(0deg)}
-  75% {transform: translate(2px, 0px) rotateZ(-1deg)}
-  100% {transform: translate(0px, 0px) rotateZ(0deg)}
+@keyframes vibrate {
+   0% { margin: -1px 1px 1px -1px; }
+  25% { margin: 1px -1px -1px 1px; }
+  50% { margin: 1px 1px -1px -1px; }
+  75% { margin: -1px -1px 1px 1px; }
 }
