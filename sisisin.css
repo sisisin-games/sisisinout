@@ -24,10 +24,6 @@ body {
   overflow: hidden;
 }
 
-.stop {
-  transition: none;
-}
-
 .nyan {
   background-image: url("https://emoji.slack-edge.com/T04Q5G460/sisisin/dca153ae0c46d1c3.jpg");
   border-radius: 50%;
@@ -38,28 +34,4 @@ body {
 .nyan:active {
   background-color: #110;
   box-shadow: 0 0 10px #110;
-}
-
-.nyan[data-r="-1"] {
-  transform: rotate(-90deg);
-}
-
-.nyan[data-r="0"] {
-  transform: rotate(0deg);
-}
-
-.nyan[data-r="1"] {
-  transform: rotate(90deg);
-}
-
-.nyan[data-r="2"] {
-  transform: rotate(180deg);
-}
-
-.nyan[data-r="3"] {
-  transform: rotate(270deg);
-}
-
-.nyan[data-r="4"] {
-  transform: rotate(360deg);
 }
