@@ -56,9 +56,31 @@ jQuery(async $ => {
   await new Promise(resolve => $(document).one('si:finish', resolve));
 
   const endedAt = Date.now();
+  const time = ((endedAt - startedAt) / 1000).toFixed(2);
 
-  alert(`クリア！\n操作数は ${count} 回\nタイムは ${((endedAt - startedAt) / 1000).toFixed(2)} 秒でした`);
+  alert(`クリア！\n操作数は ${count} 回\nタイムは ${time} 秒でした`);
   
+  cv({ count, time });
   location.reload();
 });
- 
+
+function cv(cvDetail) {
+  if (!window._adp) {
+    window._adp = [];
+  }
+
+  window._adp.push({
+    cvDetail,
+    s: 'wc',
+    a: '403',
+    f: '469',
+    u: 'https://a403.stg-tracker.adplan7.com/wc/c/j/469',
+    db: 'https://a403.stg-tracker.adplan7.com/db/pb/403',
+  });
+
+  const script = document.createElement('script');
+  script.src = 'https://stg-widget.adplan7.com/s/1.0/wc.js';
+  script.charset = 'UTF-8';
+  document.head.appendChild(script);
+  document.adoptNode(script);
+}
