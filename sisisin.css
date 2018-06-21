@@ -36,6 +36,11 @@ body {
   box-shadow: 0 0 10px #110;
 }
 
+.nyan[data-r="0"] {
+  transform: rotate(0);
+  transition: none;
+}
+
 .nyan[data-r="1"] {
   transform: rotate(90deg);
 }

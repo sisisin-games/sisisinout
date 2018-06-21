@@ -43,11 +43,17 @@ jQuery(async $ => {
 
   $('.nyan').filter(() => Math.random() < 0.5).each((_, l) => $(l).click());
 
+  let count = 0;
+
+  $(document).on('si:click', () => count++);
+
   const startedAt = Date.now();
 
   await new Promise(resolve => $(document).one('si:finish', resolve));
 
   const endedAt = Date.now();
 
-  alert(`クリア！\nタイムは ${(endedAt - startedAt) / 1000 | 0} 秒でした`);
+  alert(`クリア！\n操作数は ${count} 回\nタイムは ${((endedAt - startedAt) / 1000).toFixed(2)} 秒でした`);
+  
+  location.reload();
 });
