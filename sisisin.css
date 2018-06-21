@@ -37,8 +37,7 @@ body {
 }
 
 .nyan[data-r="0"] {
-  transform: rotate(0);
-  transition: none;
+  transform: rotate(calc(attr("data-r") * 90));
 }
 
 .nyan[data-r="1"] {

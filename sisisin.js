@@ -28,6 +28,10 @@ $(document).on('si:change', () => {
     $(document).trigger('si:finish');
 });
 
+$(document).on('transitionend', ({target}) => {
+  console.log(target);
+});
+
 jQuery(async $ => {
   const [, width, height] = (location.search.match(/\bsize=(\d+)x(\d+)/) || [, 5, 5]).map(Number);
   const board = $('.board').css({
@@ -41,7 +45,7 @@ jQuery(async $ => {
     }
   }
 
-  $('.nyan').filter(() => Math.random() < 0.5).each((_, l) => $(l).click());
+  // $('.nyan').filter(() => Math.random() < 0.5).each((_, l) => $(l).click());
 
   let count = 0;
 
