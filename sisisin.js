@@ -8,20 +8,23 @@ $(document).on('click', '.nyan', ({target}) => {
 });
 
 $(document).on('si:click', (_, x, y) => {
-  $(`[data-x="${x}"][data-y="${y}"]`).data('r', );
-  $(`[data-x="${x}"][data-y="${y - 1}"]`)
-    .add(`[data-x="${x - 1}"][data-y="${y}"]`)
-    .add(`[data-x="${x + 1}"][data-y="${y}"]`)
-    .add(`[data-x="${x}"][data-y="${y + 1}"]`)
-    .each((_, nyan) => {
-      $(nyan).data('r', nyan);
+  $(`[data-x="${x}"][data-y="${y}"]`).each((_, nyan) => {
+    const $nyan = $(nyan);
+    $nyan.data('r', ($nyan.data('r') + 1) % 4);
+  });
+  $(`
+    [data-x="${x}"][data-y="${y - 1}"], [data-x="${x - 1}"][data-y="${y}"],
+    [data-x="${x + 1}"][data-y="${y}"], [data-x="${x}"][data-y="${y + 1}"]
+  `).each((_, nyan) => {
+      const $nyan = $(nyan);
+      $nyan.data('r', ($nyan.data('r') + 3) % 4);
     });
 
   setTimeout(() => $(document).trigger('si:change'), 100);
 });
 
 $(document).on('si:change', () => {
-  if (!$('.nyan.on').length)
+  if (!$('.nyan:not([data-r="0"])').length)
     $(document).trigger('si:finish');
 });
 
@@ -34,7 +37,9 @@ jQuery(async $ => {
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-      board.append(`<div class="nyan" data-x="${x}" data-y="${y}" data-r="0">`);
+      $(`<div class="nyan"/>`)
+        .data({ x, y, r: 0 })
+        .appendTo(board);
     }
   }
 

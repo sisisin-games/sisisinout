@@ -24,24 +24,25 @@ body {
   overflow: hidden;
 }
 
-.light {
+.nyan {
   border-radius: 50%;
   cursor: pointer;
   transition: 100ms ease-out;
 }
 
-.light.on {
-  background-color: #ffe;
-  background-image: radial-gradient(circle at right bottom, #ff09 , transparent 50%);
-  box-shadow: 0 0 100px #ffe;
-  z-index: 1;
-}
-
-.light.on:active {
-  box-shadow: 0 0 50px #ffe;
-}
-
-.light:not(.on):active {
+.nyan:active {
   background-color: #110;
   box-shadow: 0 0 10px #110;
+}
+
+.nyan[data-r="1"] {
+  transform: rotate(90deg);
+}
+
+.nyan[data-r="2"] {
+  transform: rotate(180deg);
+}
+
+.nyan[data-r="3"] {
+  transform: rotate(270deg);
 }
