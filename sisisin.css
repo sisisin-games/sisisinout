@@ -25,9 +25,10 @@ body {
 }
 
 .nyan {
+  background-image: url("https://emoji.slack-edge.com/T04Q5G460/sisisin/dca153ae0c46d1c3.jpg");
   border-radius: 50%;
   cursor: pointer;
-  transition: 100ms ease-out;
+  transition: 200ms ease-out;
 }
 
 .nyan:active {

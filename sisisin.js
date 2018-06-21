@@ -10,17 +10,17 @@ $(document).on('click', '.nyan', ({target}) => {
 $(document).on('si:click', (_, x, y) => {
   $(`[data-x="${x}"][data-y="${y}"]`).each((_, nyan) => {
     const $nyan = $(nyan);
-    $nyan.data('r', ($nyan.data('r') + 1) % 4);
+    $nyan.attr('data-r', (+$nyan.attr('data-r') + 1) % 4);
   });
   $(`
     [data-x="${x}"][data-y="${y - 1}"], [data-x="${x - 1}"][data-y="${y}"],
     [data-x="${x + 1}"][data-y="${y}"], [data-x="${x}"][data-y="${y + 1}"]
   `).each((_, nyan) => {
       const $nyan = $(nyan);
-      $nyan.data('r', ($nyan.data('r') + 3) % 4);
+      $nyan.attr('data-r', (+$nyan.attr('data-r') + 3) % 4);
     });
 
-  setTimeout(() => $(document).trigger('si:change'), 100);
+  setTimeout(() => $(document).trigger('si:change'), 200);
 });
 
 $(document).on('si:change', () => {
@@ -37,9 +37,7 @@ jQuery(async $ => {
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-      $(`<div class="nyan"/>`)
-        .data({ x, y, r: 0 })
-        .appendTo(board);
+      board.append(`<div class="nyan" data-x="${x}" data-y="${y}" data-r="0">`);
     }
   }
 
