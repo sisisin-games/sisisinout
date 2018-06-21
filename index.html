@@ -6,6 +6,33 @@
   <link rel="stylesheet" href="sisisin.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="sisisin.js"></script>
+  <script type="text/javascript">
+  /**
+   * ADPLAN v7 Page View Tag
+   * Opt, Inc. All rights reserved.
+   */
+  if (!window._adp) { window._adp = []; }
+  window._adp.push({
+    emailOrUserIdForMatching: null,
+    title: null, // イベント発生ページのページタイトル（設定しない場合自動取得）
+    locationUrl: null, // イベント発生ページのURL（設定しない場合自動取得）
+    s: "ws",
+    a: "403",
+    u: "https://a403.stg-tracker.adplan7.com/ws/v/j/403",
+    db: "https://a403.stg-tracker.adplan7.com/db/pb/403",
+    d: "https://a403.stg-tracker.adplan7.com/",
+    cd: []
+  });
+  (function(t) {
+    var i = document.createElement(t), s;
+    i.type = "text/javascript";
+    i.src = "https://stg-widget.adplan7.com/s/1.0/ws.js";
+    i.charset = "UTF-8";
+    i.async = true;
+    s = document.getElementsByTagName(t)[0];
+    s.parentNode.insertBefore(i, s);
+  })("script");
+  </script>
 </head>
 <body>
   <div class="board"></div>
