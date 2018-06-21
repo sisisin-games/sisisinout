@@ -58,9 +58,9 @@ jQuery(async $ => {
   const endedAt = Date.now();
   const time = ((endedAt - startedAt) / 1000).toFixed(2);
 
+  cv({ count, time });
   alert(`クリア！\n操作数は ${count} 回\nタイムは ${time} 秒でした`);
   
-  cv({ count, time });
   location.reload();
 });
 
