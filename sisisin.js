@@ -1,26 +1,28 @@
-$(document).on('click', '.light', ({target}) => {
+$(document).on('click', '.nyan', ({target}) => {
   const $el = $(target);
 
-  $(document).trigger('lo:click', [
+  $(document).trigger('si:click', [
     +$el.data('x'),
     +$el.data('y'),
   ]);
 });
 
-$(document).on('lo:click', (_, x, y) => {
-  $(`[data-x="${x}"][data-y="${y}"]`)
-    .add(`[data-x="${x}"][data-y="${y - 1}"]`)
+$(document).on('si:click', (_, x, y) => {
+  $(`[data-x="${x}"][data-y="${y}"]`).data('r', );
+  $(`[data-x="${x}"][data-y="${y - 1}"]`)
     .add(`[data-x="${x - 1}"][data-y="${y}"]`)
     .add(`[data-x="${x + 1}"][data-y="${y}"]`)
     .add(`[data-x="${x}"][data-y="${y + 1}"]`)
-    .toggleClass('on');
+    .each((_, nyan) => {
+      $(nyan).data('r', nyan);
+    });
 
-  setTimeout(() => $(document).trigger('lo:change'), 100);
+  setTimeout(() => $(document).trigger('si:change'), 100);
 });
 
-$(document).on('lo:change', () => {
-  if (!$('.light.on').length)
-    $(document).trigger('lo:finish');
+$(document).on('si:change', () => {
+  if (!$('.nyan.on').length)
+    $(document).trigger('si:finish');
 });
 
 jQuery(async $ => {
@@ -32,15 +34,15 @@ jQuery(async $ => {
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-      board.append(`<div class="light" data-x="${x}" data-y="${y}">`);
+      board.append(`<div class="nyan" data-x="${x}" data-y="${y}" data-r="0">`);
     }
   }
 
-  $('.light').filter(() => Math.random() < 0.5).each((_, l) => $(l).click());
+  $('.nyan').filter(() => Math.random() < 0.5).each((_, l) => $(l).click());
 
   const startedAt = Date.now();
 
-  await new Promise(resolve => $(document).one('lo:finish', resolve));
+  await new Promise(resolve => $(document).one('si:finish', resolve));
 
   const endedAt = Date.now();
 
