@@ -30,8 +30,3 @@ body {
   cursor: pointer;
   transition: 200ms ease-out;
 }
-
-.nyan:active {
-  background-color: #110;
-  box-shadow: 0 0 10px #110;
-}
