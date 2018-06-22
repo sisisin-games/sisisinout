@@ -33,14 +33,14 @@ $(document).on('si:change', () => {
 });
 
 jQuery(async $ => {
-  const [, width, height] = (location.search.match(/\bsize=(\d+)x(\d+)/) || [, 5, 5]).map(Number);
+  const size = +(location.search.match(/\bsize=(\d+)/) || [, 5])[1];
   const board = $('.board').css({
-    'grid-template-columns': '1fr '.repeat(width),
-    'grid-template-rows': '1fr '.repeat(height),
+    'grid-template-columns': '1fr '.repeat(size),
+    'grid-template-rows': '1fr '.repeat(size),
   });
 
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
       board.append(`<div class="nyan" data-x="${x}" data-y="${y}" data-r="0" data-deg="0">`);
     }
   }
@@ -58,7 +58,7 @@ jQuery(async $ => {
   const endedAt = Date.now();
   const time = ((endedAt - startedAt) / 1000).toFixed(2);
 
-  cv({ count, time });
+  cv({ count, time, size });
   alert(`クリア！\n操作数は ${count} 回\nタイムは ${time} 秒でした`);
   
   location.reload();
