@@ -58,17 +58,20 @@ jQuery(async $ => {
   const endedAt = Date.now();
   const time = ((endedAt - startedAt) / 1000).toFixed(2);
 
-  cv({ count, time, size });
+  const cving = cv({ count, time, size });
+
   alert(`クリア！\n操作数は ${count} 回\nタイムは ${time} 秒でした`);
-  
+
+  await cving;
+
   location.reload();
 });
 
-function cv(cvDetail) {
+async function cv(cvDetail) {
   if (!window._adp) {
     window._adp = [];
   }
-  
+
   const ping = {
     cvDetail,
     s: 'wc',
@@ -82,7 +85,18 @@ function cv(cvDetail) {
 
   const script = document.createElement('script');
   script.src = 'https://stg-widget.adplan7.com/s/1.0/wc.js';
-  script.charset = 'UTF-8';
+  script.charset = 'utf-8';
+  script.async = true;
   document.head.appendChild(script);
   document.adoptNode(script);
+
+  return new Promise(resolve => {
+    const timer = setInterval(() => {
+      if (window._adp.includes(ping))
+        return;
+
+      clearTimeout(timer);
+      resolve();
+    }, 100);
+  });
 }
