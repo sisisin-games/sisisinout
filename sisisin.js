@@ -95,7 +95,7 @@ async function cv(cvDetail) {
       if (window._adp.includes(ping))
         return;
 
-      clearTimeout(timer);
+      clearInterval(timer);
       resolve();
     }, 100);
   });
