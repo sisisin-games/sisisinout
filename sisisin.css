@@ -16,6 +16,8 @@ body {
 .board {
   display: grid;
   grid-gap: 10px;
+  justify-items: center;
+  align-items: center;
   width: 400px;
   height: 400px;
   padding: 20px;
