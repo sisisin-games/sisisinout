@@ -24,11 +24,15 @@ body {
   overflow: hidden;
 }
 
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .nyan {
-  background-image: url("https://emoji.slack-edge.com/T04Q5G460/sisisin/dca153ae0c46d1c3.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 50%;
   cursor: pointer;
   transition: 200ms ease-out;

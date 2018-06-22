@@ -33,19 +33,22 @@ $(document).on('si:change', () => {
 });
 
 jQuery(async $ => {
-  const size = +(location.search.match(/\bsize=(\d+)/) || [, 5])[1];
+  const imageUrl = 'https://emoji.slack-edge.com/T04Q5G460/sisisin/dca153ae0c46d1c3.jpg';
+  const [, width, height] = (location.search.match(/\bsize=(\d+)x(\d+)/) || [, 5, 5]).map(Number);
   const board = $('.board').css({
-    'grid-template-columns': '1fr '.repeat(size),
-    'grid-template-rows': '1fr '.repeat(size),
+    'grid-template-columns': '1fr '.repeat(width),
+    'grid-template-rows': '1fr '.repeat(height),
   });
 
-  for (let y = 0; y < size; y++) {
-    for (let x = 0; x < size; x++) {
-      board.append(`<div class="nyan" data-x="${x}" data-y="${y}" data-r="0" data-deg="0">`);
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      board.append(`<div class="cell"><img src="${imageUrl}" class="nyan" data-x="${x}" data-y="${y}" data-r="0" data-deg="0">`);
     }
   }
 
-  $('.nyan').filter(() => Math.random() < 0.5).each((_, l) => $(l).click());
+  $('.nyan').filter(() => Math.random() < 0.3).each((_, l) => $(l).click());
+  $('.nyan').filter(() => Math.random() < 0.3).each((_, l) => $(l).click());
+  $('.nyan').filter(() => Math.random() < 0.3).each((_, l) => $(l).click());
 
   let count = 0;
 
@@ -58,7 +61,7 @@ jQuery(async $ => {
   const endedAt = Date.now();
   const time = ((endedAt - startedAt) / 1000).toFixed(2);
 
-  const cving = cv({ count, time, size });
+  const cving = cv({ count, time, size: `${width}x${height}` });
 
   alert(`クリア！\n操作数は ${count} 回\nタイムは ${time} 秒でした`);
 
