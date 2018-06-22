@@ -68,15 +68,17 @@ function cv(cvDetail) {
   if (!window._adp) {
     window._adp = [];
   }
-
-  window._adp.push({
+  
+  const ping = {
     cvDetail,
     s: 'wc',
     a: '403',
     f: '469',
     u: 'https://a403.stg-tracker.adplan7.com/wc/c/j/469',
     db: 'https://a403.stg-tracker.adplan7.com/db/pb/403',
-  });
+  };
+
+  window._adp.push(ping);
 
   const script = document.createElement('script');
   script.src = 'https://stg-widget.adplan7.com/s/1.0/wc.js';
