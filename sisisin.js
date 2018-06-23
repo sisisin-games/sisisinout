@@ -87,12 +87,7 @@ async function cv(cvDetail) {
 
   window._adp.push(ping);
 
-  const script = document.createElement('script');
-  script.src = 'https://stg-widget.adplan7.com/s/1.0/wc.js';
-  script.charset = 'utf-8';
-  script.async = true;
-  document.head.appendChild(script);
-  document.adoptNode(script);
+  await jQuery.getScript('https://stg-widget.adplan7.com/s/1.0/wc.js');
 
   return new Promise(resolve => {
     const timer = setInterval(() => {
