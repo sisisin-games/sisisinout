@@ -91,7 +91,7 @@ async function cv(cvDetail) {
 
   return new Promise(resolve => {
     const timer = setInterval(() => {
-      if (!window._adp._done || !window._adp._done.includes(ping))
+      if (window._adp.includes(ping))
         return;
 
       clearInterval(timer);
