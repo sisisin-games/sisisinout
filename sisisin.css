@@ -1,3 +1,7 @@
+html {
+  touch-action: manipulation;
+}
+
 html,
 body {
   width: 100%;
@@ -22,6 +26,7 @@ body {
   border-radius: 20px;
   background: #000;
   overflow: hidden;
+  user-select: none;
 }
 
 .cell {

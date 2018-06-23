@@ -1,4 +1,4 @@
-$(document).on('click touch', '.nyan', ({target}) => {
+$(document).on('click', '.nyan', ({target}) => {
   const $el = $(target);
 
   $(document).trigger('si:click', [
