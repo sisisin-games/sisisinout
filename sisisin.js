@@ -1,4 +1,4 @@
-$(document).on('click', '.nyan', ({target}) => {
+$(document).on('click touch', '.nyan', ({target}) => {
   const $el = $(target);
 
   $(document).trigger('si:click', [
@@ -14,6 +14,7 @@ $(document).on('si:click', (_, x, y) => {
     nyan.dataset.deg = deg;
     nyan.style.transform = `rotate(${deg}deg)`;
   });
+
   $(`
     [data-x="${x}"][data-y="${y - 1}"], [data-x="${x - 1}"][data-y="${y}"],
     [data-x="${x + 1}"][data-y="${y}"], [data-x="${x}"][data-y="${y + 1}"]
@@ -95,7 +96,7 @@ async function cv(cvDetail) {
 
   return new Promise(resolve => {
     const timer = setInterval(() => {
-      if (window._adp.includes(ping))
+      if (!window._adp._done || !window._adp._done.includes(ping))
         return;
 
       clearInterval(timer);
