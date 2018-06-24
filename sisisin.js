@@ -43,7 +43,7 @@ jQuery(async $ => {
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-      board.append(`<div class="cell"><img src="${imageUrl}" class="nyan" data-x="${x}" data-y="${y}" data-r="0" data-deg="0">`);
+      board.append(`<div class="sime"><img src="${imageUrl}" class="nyan" data-x="${x}" data-y="${y}" data-r="0" data-deg="0">`);
     }
   }
 
