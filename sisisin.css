@@ -15,24 +15,27 @@ body {
   justify-content: center;
   align-items: center;
   background: #fff;
-  color: #333;
-  overflow: hidden;
 }
 
 .board {
   display: grid;
-  max-width: 100%;
-  max-height: 100%;
+  grid-gap: 10px;
+  width: 400px;
+  height: 400px;
+  padding: 20px;
+  overflow: hidden;
   user-select: none;
 }
 
-.sime {
+.cell {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .nyan {
+  max-width: 100%;
+  max-height: 100%;
   cursor: pointer;
   transition: 200ms ease-out;
 }

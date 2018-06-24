@@ -37,17 +37,19 @@ jQuery(async $ => {
   const imageUrl = 'https://emoji.slack-edge.com/T04Q5G460/sisisin/dca153ae0c46d1c3.jpg';
   const [, width, height] = (location.search.match(/\bsize=(\d+)x(\d+)/) || [, 5, 5]).map(Number);
   const board = $('.board').css({
-    'grid-template': `repeat(${height}, 1fr)/ repeat(${width}, 1fr)`,
+    'grid-template-columns': '1fr '.repeat(width),
+    'grid-template-rows': '1fr '.repeat(height),
   });
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-      board.append(`<div class="sime"><img src="${imageUrl}" class="nyan" data-x="${x}" data-y="${y}" data-r="0" data-deg="0">`);
+      board.append(`<div class="cell"><img src="${imageUrl}" class="nyan" data-x="${x}" data-y="${y}" data-r="0" data-deg="0">`);
     }
   }
 
-  for (const i of [...Array(3)])
-    $('.nyan').filter(() => Math.random() < 0.3).each((_, l) => $(l).click());
+  $('.nyan').filter(() => Math.random() < 0.3).each((_, l) => $(l).click());
+  $('.nyan').filter(() => Math.random() < 0.3).each((_, l) => $(l).click());
+  $('.nyan').filter(() => Math.random() < 0.3).each((_, l) => $(l).click());
 
   let count = 0;
 
