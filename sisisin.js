@@ -57,8 +57,7 @@ jQuery(async $ => {
 
   await new Promise(resolve => $(document).one('si:finish', resolve));
 
-  const endedAt = Date.now();
-  const time = ((endedAt - startedAt) / 1000).toFixed(2);
+  const time = ((Date.now() - startedAt) / 1000).toFixed(2);
 
   cv({ count, time, size: `${width}x${height}` });
 
