@@ -12,30 +12,21 @@ body {
 
 body {
   display: flex;
-  justify-content: center;
-  align-items: center;
   background: #fff;
+  color: #333;
 }
 
 .board {
   display: grid;
-  grid-gap: 10px;
-  width: 400px;
-  height: 400px;
-  padding: 20px;
-  overflow: hidden;
+  margin: auto;
   user-select: none;
 }
 
-.cell {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .nyan {
-  max-width: 100%;
-  max-height: 100%;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background: url("https://emoji.slack-edge.com/T04Q5G460/sisisin/dca153ae0c46d1c3.jpg") center/contain no-repeat;
   border-radius: 50%;
   cursor: pointer;
   transition: 200ms ease-out;
@@ -46,8 +37,8 @@ body {
 }
 
 @keyframes vibrate {
-   0% { margin: -1px 1px 1px -1px; }
-  25% { margin: 1px -1px -1px 1px; }
-  50% { margin: 1px 1px -1px -1px; }
-  75% { margin: -1px -1px 1px 1px; }
+   0% { left: -1px; top: -1px; }
+  25% { left:  1px; top:  1px; }
+  50% { left: -1px; top:  1px; }
+  75% { left:  1px; top: -1px; }
 }
