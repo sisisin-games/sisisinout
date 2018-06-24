@@ -12,13 +12,17 @@ body {
 
 body {
   display: flex;
-  background: #fff;
+  background: url("https://emoji.slack-edge.com/T04Q5G460/sisisin/dca153ae0c46d1c3.jpg") left top/160px;
   color: #333;
 }
 
 .board {
   display: grid;
   margin: auto;
+  padding: 20px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 0 0 100vmax #fffe;
   user-select: none;
 }
 
@@ -26,8 +30,8 @@ body {
   position: relative;
   width: 80px;
   height: 80px;
-  background: url("https://emoji.slack-edge.com/T04Q5G460/sisisin/dca153ae0c46d1c3.jpg") center/contain no-repeat;
   border-radius: 50%;
+  background: url("https://emoji.slack-edge.com/T04Q5G460/sisisin/dca153ae0c46d1c3.jpg") center/contain no-repeat;
   cursor: pointer;
   transition: 200ms ease-out;
 }
