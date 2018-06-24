@@ -37,8 +37,7 @@ jQuery(async $ => {
   const imageUrl = 'https://emoji.slack-edge.com/T04Q5G460/sisisin/dca153ae0c46d1c3.jpg';
   const [, width, height] = (location.search.match(/\bsize=(\d+)x(\d+)/) || [, 5, 5]).map(Number);
   const board = $('.board').css({
-    'grid-template-columns': '1fr '.repeat(width),
-    'grid-template-rows': '1fr '.repeat(height),
+    'grid-template': `repeat(${height}, 1fr)/ repeat(${width}, 1fr)`,
   });
 
   for (let y = 0; y < height; y++) {
@@ -47,9 +46,8 @@ jQuery(async $ => {
     }
   }
 
-  $('.nyan').filter(() => Math.random() < 0.3).each((_, l) => $(l).click());
-  $('.nyan').filter(() => Math.random() < 0.3).each((_, l) => $(l).click());
-  $('.nyan').filter(() => Math.random() < 0.3).each((_, l) => $(l).click());
+  for (const i of [...Array(3)])
+    $('.nyan').filter(() => Math.random() < 0.3).each((_, l) => $(l).click());
 
   let count = 0;
 
