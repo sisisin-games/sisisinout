@@ -57,16 +57,14 @@ jQuery(async $ => {
   const endedAt = Date.now();
   const time = ((endedAt - startedAt) / 1000).toFixed(2);
 
-  const cving = cv({ count, time, size: `${width}x${height}` });
+  cv({ count, time, size: `${width}x${height}` });
 
   alert(`クリア！\n操作数は ${count} 回\nタイムは ${time} 秒でした`);
-
-  await cving;
 
   location.reload();
 });
 
-async function cv(cvDetail) {
+function cv(cvDetail) {
   if (!window._adp) {
     window._adp = [];
   }
@@ -82,15 +80,5 @@ async function cv(cvDetail) {
 
   window._adp.push(ping);
 
-  await jQuery.getScript('https://stg-widget.adplan7.com/s/1.0/wc.js');
-
-  return new Promise(resolve => {
-    const timer = setInterval(() => {
-      if (window._adp.includes(ping))
-        return;
-
-      clearInterval(timer);
-      resolve();
-    }, 100);
-  });
+  jQuery.getScript('https://stg-widget.adplan7.com/s/1.0/wc.js');
 }
