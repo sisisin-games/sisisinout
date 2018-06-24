@@ -48,7 +48,10 @@ jQuery(async $ => {
 
   let count = 0;
 
-  $(document).on('si:click', () => count++);
+  $(document).on('si:click', () => {
+    count++;
+    document.title = `sisisinout (${count})`;
+  });
 
   const startedAt = Date.now();
 
@@ -80,5 +83,9 @@ function cv(cvDetail) {
 
   window._adp.push(ping);
 
-  jQuery.getScript('https://stg-widget.adplan7.com/s/1.0/wc.js');
+  const script = document.createElement('script');
+  script.src = 'https://stg-widget.adplan7.com/s/1.0/wc.js';
+  script.charset = 'utf-8';
+  document.head.appendChild(script);
+  document.adoptNode(script);
 }
