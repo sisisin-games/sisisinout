@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="sisisin.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="sisisin.js"></script>
-  <script async type="text/javascript">
+  <script>
   if (!window._adp) { window._adp = []; }
   window._adp.push({
     s: "ws",
@@ -19,10 +19,9 @@
   });
   (function(t) {
     var i = document.createElement(t), s;
-    i.type = "text/javascript";
     i.src = "https://stg-widget.adplan7.com/s/1.0/ws.js";
-    i.charset = "UTF-8";
-    i.async = true;
+    i.charset = "utf-8";
+    i.defer = true;
     s = document.getElementsByTagName(t)[0];
     s.parentNode.insertBefore(i, s);
   })("script");
