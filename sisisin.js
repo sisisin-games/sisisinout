@@ -59,32 +59,7 @@ jQuery(async $ => {
 
   const time = ((Date.now() - startedAt) / 1000).toFixed(2);
 
-  cv({ count, time, size: `${width}x${height}` });
-
   alert(`クリア！\n操作数は ${count} 回\nタイムは ${time} 秒でした`);
 
   location.reload();
 });
-
-function cv(cvDetail) {
-  if (!window._adp) {
-    window._adp = [];
-  }
-
-  const ping = {
-    cvDetail,
-    s: 'wc',
-    a: '403',
-    f: '469',
-    u: 'https://a403.stg-tracker.adplan7.com/wc/c/j/469',
-    db: 'https://a403.stg-tracker.adplan7.com/db/pb/403',
-  };
-
-  window._adp.push(ping);
-
-  const script = document.createElement('script');
-  script.src = 'https://stg-widget.adplan7.com/s/1.0/wc.js';
-  script.charset = 'utf-8';
-  document.head.appendChild(script);
-  document.adoptNode(script);
-}
